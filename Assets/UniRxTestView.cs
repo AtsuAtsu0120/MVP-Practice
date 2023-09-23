@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 public class UniRxTestView : MonoBehaviour
@@ -9,6 +10,8 @@ public class UniRxTestView : MonoBehaviour
     void Start()
     {
         presenter = new();
+
+        presenter.CollectionObserver.Subscribe(x => Debug.Log(x.Value));
     }
 
     // Update is called once per frame
