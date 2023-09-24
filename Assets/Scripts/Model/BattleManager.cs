@@ -20,7 +20,12 @@ public class BattleManager
     public void AddEneity()
     {
         var random = new Random().Next(0, 100);
-        var entityName = random switch
+
+        entities.Add(GetEntity(random));
+    }
+    public Entity GetEntity(int hp)
+    {
+        var entityName = hp switch
         {
             < 10 => "Slime",
             < 20 => "Goblin",
@@ -35,6 +40,6 @@ public class BattleManager
             _ => "???"
         };
 
-        entities.Add(new(entityName, random));
+        return new(entityName, hp);
     }
 }
