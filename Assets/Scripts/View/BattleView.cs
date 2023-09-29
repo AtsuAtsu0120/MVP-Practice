@@ -1,38 +1,38 @@
-using UnityEngine;
-using UniRx;
-using TMPro;
+//using UnityEngine;
+//using UniRx;
+//using TMPro;
 
-public class BattleView : MonoBehaviour
-{
-    private BattlePresenter battlePresenter;
+//public class BattleView : MonoBehaviour
+//{
+//    private BattlePresenter battlePresenter;
 
-    [Header("GameObject")]
-    [SerializeField] private GameObject entitiesList;
-    [Header("Prefab")]
-    [SerializeField] private GameObject entityPrefab;
-    private void Start()
-    {
-        battlePresenter = new();
+//    [Header("GameObject")]
+//    [SerializeField] private GameObject entitiesList;
+//    [Header("Prefab")]
+//    [SerializeField] private GameObject entityPrefab;
+//    private void Start()
+//    {
+//        battlePresenter = new();
 
-        battlePresenter.OnEntitiesAdd.Subscribe(item => OnAddEntity(item.Value));
-        battlePresenter.OnEntitiesRemove.Subscribe(item => OnRemoveEntity(item.Index));
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            battlePresenter.AddEntitesInput.OnNext(Unit.Default);
-        }
-    }
+//        battlePresenter.OnEntitiesAdd.Subscribe(item => OnAddEntity(item.Value));
+//        battlePresenter.OnEntitiesRemove.Subscribe(item => OnRemoveEntity(item.Index));
+//    }
+//    private void Update()
+//    {
+//        if(Input.GetKeyDown(KeyCode.Space))
+//        {
+//            battlePresenter.AddEntitesInput.OnNext(Unit.Default);
+//        }
+//    }
 
-    private void OnAddEntity(Entity entity)
-    {
-        var instance = Instantiate(entityPrefab, entitiesList.transform);
+//    private void OnAddEntity(Entity entity)
+//    {
+//        var instance = Instantiate(entityPrefab, entitiesList.transform);
 
-        instance.GetComponent<TextMeshProUGUI>().text = $"{entity.Name}\nHP:{entity.Hp}";
-    }
-    private void OnRemoveEntity(int index)
-    {
-        Destroy(entitiesList.transform.GetChild(index));
-    }
-}
+//        instance.GetComponent<TextMeshProUGUI>().text = $"{entity.Name}\nHP:{entity.Hp}";
+//    }
+//    private void OnRemoveEntity(int index)
+//    {
+//        Destroy(entitiesList.transform.GetChild(index));
+//    }
+//}
